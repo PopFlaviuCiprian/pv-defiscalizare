@@ -16,11 +16,11 @@ def declaratie():
         return render_template("pv_defiscalizare.html", submitted_data=data)
     return render_template("pv_defiscalizare.html", submitted_data=None)
 
-# @app.route("/shutdown", methods=["POST"])
-# def shutdown():
-#     #Oprește serverul
-#      os.kill(os.getpid(), signal.SIGTERM)
-#      return "Server stopped."
+@app.route("/shutdown", methods=["POST"])
+def shutdown():
+    #Oprește serverul
+     os.kill(os.getpid(), signal.SIGTERM)
+     return "Server stopped."
 
 def open_browser():
     webbrowser.open("http://127.0.0.1:5000/")
