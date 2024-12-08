@@ -99,7 +99,7 @@
 .semnaturi_pag1 {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 60px;*/
+    margin-bottom: 40px;*/
 }
 
 .semnatura_beneficiar, .semnatura_service {
@@ -141,16 +141,25 @@ th, td {
     text-align: left;
 }
 
+.container_butoane {
+    align-items: center;      /* Centrează butoanele pe verticală */
+    margin: 0;
+    margin-bottom: 20px;
+
+}
+
 /* Stiluri pentru butoane */
 button {
-    padding: 10px 30px;
+    padding: 10px 20px;
     background-color: #007BFF;
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    margin-top: 5px; */
+    /*margin-top: 5px;*/
+    text-align: left;
 }
+
 
 button:hover {
     background-color: #0056b3;
