@@ -70,11 +70,11 @@
                     <div class="semnaturi_pag1">
                         <div class="semnatura_beneficiar"><br>
                             Societate Comerciala<br>
-                            Semnatura<br>.........................
+                            Semnatura<br>................................
                         </div>
                         <div class="semnatura_service"><br>
                             Unitate Service Acreditata<br>
-                            Semnatura<br>.........................
+                            Semnatura<br>................................
                         </div>
                     </div>
                 </form>
@@ -168,18 +168,80 @@
             <div class="semnaturi_pag2" style="">
                 <div class="semnatura_beneficiar2"><br>
                     Societate Comerciala<br>
-                    Semnatura<br>.........................
+                    Semnatura<br>................................
                 </div>
                 <div class="semnatura_service2"><br>
                     Unitate Service Acreditata<br>
-                    Semnatura<br>.........................
+                    Semnatura<br>................................
                 </div>
             </div>
-
         </div>
-
-
     </div>
+                <button type="button" id="salveaza_pdf">Salvează PDF</button>
+                <button type="button" id="imprima">Imprimă</button>
+
+    <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                // Ascunde butoanele pentru PDF la imprimare
+                var salveazaPdfButton = document.getElementById("salveaza_pdf");
+                var imprimaButton = document.getElementById("imprima");
+
+                function hideButtons() {
+                    salveazaPdfButton.style.display = 'none';
+                    imprimaButton.style.display = 'none';
+                }
+
+                function showButtons() {
+                    salveazaPdfButton.style.display = 'inline-block';
+                    imprimaButton.style.display = 'inline-block';
+                }
+
+                salveazaPdfButton.addEventListener("click", function () {
+                    hideButtons();
+                    const element = document.getElementById("document");
+                    const opt = {
+                    margin: [3, 3, 3, 5],
+                    filename: 'declaratie_instalare_rbc.pdf',
+                    image: { type: 'jpeg', quality: 1 },
+                    html2canvas: {
+                        scale: 2,
+                        useCORS: true
+                    },
+                    jsPDF: {
+                        unit: 'mm',
+                        format: 'a4',
+                        orientation: 'portrait'
+                    },
+                    pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+                };
+
+                    html2pdf().from(element).set(opt).save().then(function () {
+                        showButtons();
+                    });
+                });
+
+                imprimaButton.addEventListener("click", function () {
+                    hideButtons();
+                    window.print(); // Deschide fereastra de imprimare
+                    setTimeout(function () {
+                        showButtons();
+                    }, 1000); // Reîntoarce butoanele după un scurt delay
+                });
+            });
+    </script>
+        </div>
+        <script>
+        window.addEventListener("beforeunload", function () {
+            navigator.sendBeacon("/shutdown");
+        });
+        </script>
+
+<script>
+    window.addEventListener("beforeunload", function () {
+        navigator.sendBeacon("/shutdown");
+    });
+</script>
+
 
 </body>
 </html>

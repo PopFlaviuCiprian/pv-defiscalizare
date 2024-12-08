@@ -16,9 +16,9 @@
 .a4 {
     font-family: Arial, sans-serif;
     width: 210mm;
-    height: 297mm;
+    /*height: 297mm;*/ /* am dezactivat asta sa imi puna paginile un dupa alta*/
     padding: 10mm;
-    white-space: normal;
+    /*white-space: normal;*/
     margin-right: auto;
     margin-right: auto;
     box-sizing: border-box;
@@ -48,7 +48,7 @@
 }
 
 @media print {
-    .body {
+    body {
         background: white;
         margin: 0;
         padding: 0;
@@ -57,7 +57,12 @@
         box-shadow: none;
         overflow: visible;
         margin: 0;
-        /*page-break-inside: auto; /* Permite împărțirea paginilor */
+        padding: 0;
+        page-break-inside: auto; /* Permite împărțirea paginilor */
+    }
+    /* Ascunde butoanele la imprimare */
+    button, #salveaza_pdf, #imprima {
+        display: none !important;
     }
 }
 
@@ -129,9 +134,24 @@ th, td {
 .semnaturi_pag2 {
     display: flex;
     justify-content: space-between;
-    margin-top: 600px;
+    margin-top: 500px;
 }
 
 .semnatura_beneficiar2, .semnatura_service2 {
     text-align: left;
+}
+
+/* Stiluri pentru butoane */
+button {
+    padding: 10px 30px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 5px; */
+}
+
+button:hover {
+    background-color: #0056b3;
 }
